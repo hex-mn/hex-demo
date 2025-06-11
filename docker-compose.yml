@@ -1,0 +1,21 @@
+version: "3"
+services:
+  next-app:
+    container_name: docker-next-js
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3040:3040
+    environment:
+      - NODE_ENV=production
+      - PORT=3040
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+      - VIRTUAL_HOST=demo.hex.mn
+      - LETSENCRYPT_HOST=demo.hex.mn
+
+networks:
+  default:
+    name: proxynetwork
+    external: true
