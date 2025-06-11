@@ -25,23 +25,25 @@ export default function CategoryModal({ open, onClose, setup }: CategoryModalPro
 	useEffect(() => {
 		const lowerSearch = searchValue.toLowerCase()
 
-		const filtered = setup.menu
-			.map((parent) => {
-				const titleMatch = parent.title.toLowerCase().includes(lowerSearch)
-				const matchingChildren = parent.children.filter((child) =>
-					child.title.toLowerCase().includes(lowerSearch)
-				)
+		const filtered = Array.isArray(setup.menu)
+			? setup.menu
+					.map((parent) => {
+						const titleMatch = parent.title.toLowerCase().includes(lowerSearch)
+						const matchingChildren = parent.children.filter((child) =>
+							child.title.toLowerCase().includes(lowerSearch)
+						)
 
-				if (titleMatch || matchingChildren.length > 0) {
-					return {
-						...parent,
-						children: matchingChildren,
-					}
-				}
+						if (titleMatch || matchingChildren.length > 0) {
+							return {
+								...parent,
+								children: matchingChildren,
+							}
+						}
 
-				return null
-			})
-			.filter(Boolean) as typeof setup.menu
+						return null
+					})
+					.filter(Boolean) as typeof setup.menu
+			: []
 
 		setFilteredMenu(filtered)
 	}, [searchValue, setup])

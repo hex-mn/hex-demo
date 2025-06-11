@@ -102,8 +102,8 @@ export const sendRequestWithToken = async (type: string, endpoint: string, data?
 // Handles error notifications for 400/500 responses.
 export const sendRequestToPublicAPI = async (type: string, endpoint: string, data?: any, addSlug: boolean = true, silent: boolean = false): Promise<any> => {
     try {
-    const baseUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL;
-    const slug = process.env.SLUG || process.env.NEXT_PUBLIC_SLUG;
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const slug = process.env.NEXT_PUBLIC_SLUG;
         const url = addSlug
             ? `${baseUrl}/open/${slug}${endpoint}`
             : `${baseUrl}${endpoint}`;
