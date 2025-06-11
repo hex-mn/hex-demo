@@ -1,7 +1,7 @@
 version: "3"
 services:
   next-app:
-    container_name: docker-next-js
+    container_name: hex-demo
     build:
       context: .
       dockerfile: Dockerfile
