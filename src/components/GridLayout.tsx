@@ -26,7 +26,10 @@ function Cell({
   screenWidth: number
 }) {
   const cols = isMobile ? COLS_MOBILE : COLS_DESKTOP
-  const cellWidth = (screenWidth - (cols + 1) * GRID_GAP) / cols
+  // Set a max cell width to prevent overflow
+  const MAX_CELL_WIDTH = 40 // px, adjust as needed
+  const rawCellWidth = (screenWidth - (cols + 1) * GRID_GAP) / cols
+  const cellWidth = Math.min(rawCellWidth, MAX_CELL_WIDTH)
 
   const width = item.w * cellWidth + (item.w - 1) * GRID_GAP
   const height = item.h * cellWidth + (item.h - 1) * GRID_GAP
@@ -81,9 +84,9 @@ export default function GridLayout({ data }: { data: GridItem[] }) {
   const gridHeight = maxRow > 0 ? maxRow * cellWidth + (maxRow - 1) * GRID_GAP : 0;
 
   return (
-    <div className=''>
+    <div className="w-full flex justify-center">
       <div
-        className="relative "
+        className="relative max-w-[1920px] w-full"
         style={{ height: gridHeight }}
       >
         {data.map(item => (
