@@ -9,7 +9,7 @@ async function getBlogData(slug: string) {
 function getAbsoluteImageUrl(image: string | undefined): string | undefined {
 	if (!image) return undefined;
 	if (image.startsWith('http://') || image.startsWith('https://')) return image;
-	// You may want to set this dynamically from config/env
+	// You may want to set this dynamically from config/env or do whatever
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
 	return baseUrl.replace(/\/$/, '') + (image.startsWith('/') ? image : '/' + image);
 }
