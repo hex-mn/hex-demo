@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						/>
 						<MainMenu />
 						{/* Every page slightly higher than screen height on purpose by 10px to keep GridLayout from overflowing horizontally*/}
-						<div className="min-h-[calc(100vh-220px)]">
+						<div className="min-h-[calc(100vh-140px)]">
 							{children}
 						</div>
 						<Footer />
