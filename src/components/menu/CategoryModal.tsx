@@ -2,7 +2,7 @@ import { RemoveScroll } from 'react-remove-scroll'
 import { CgClose } from 'react-icons/cg'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { TbArticle, TbCheckbox, TbPercentage, TbTag } from 'react-icons/tb'
+import { TbCheckbox, TbPercentage, TbTag } from 'react-icons/tb'
 import { HiMiniSquares2X2 } from 'react-icons/hi2'
 
 interface CategoryModalProps {
@@ -78,15 +78,6 @@ export default function CategoryModal({ open, onClose, setup }: CategoryModalPro
 					</div>
 
 					<div className="flex md:flex-row flex-wrap gap-4 px-6 py-6 ">
-						<Link
-							href="/blog"
-							className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-gray-600 font-semibold shadow-xs transition"
-							onClick={onClose}
-						>
-							<TbArticle />
-							Нийтлэл
-						</Link>
-
 						<a
 							href="/products"
 							className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-gray-600 font-semibold shadow-xs transition"

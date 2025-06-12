@@ -151,7 +151,9 @@ export const postWishlist = async (product_slugs: string[]) => {
 	if (isLoggedIn()) {
 		return sendRequestWithToken("POST", `${process.env.NEXT_PUBLIC_API_URL}/provider/analytics/wishlist/post/`, { uuid: analyticId, product_slugs }, true);
 	} else {
-		return null;
+		if (analyticId) {
+			return sendRequestToPublicAPI("POST", `/wishlist/post/`, { uuid: analyticId, product_slugs }, true, true);
+		}
 	}
 };
 
